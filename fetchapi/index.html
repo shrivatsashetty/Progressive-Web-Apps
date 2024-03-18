@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1> Exploring Fetch APIs</h1>
+    <p id="fetch-demo"> </p>
+    <div id="fake-api-content"></div>
+
+    <script>
+
+        const apiUrl = "https://jsonplaceholder.typicode.com/todos/7";
+        const fakeApi = document.getElementById('fake-api-content');
+
+        /* try-catch are then-catch in JS */
+        fetch(apiUrl).
+            then(response => { // testing
+                if (!response.ok) {
+                    throw new Error(response.status);
+                }
+                return response.json();
+            }).
+            then(data => { // then chaining i.e. try with multiple catch
+                fakeApi.innerHTML = `
+                    <h1>Fake API Respone</h1>
+                    <p>Title : ${data.title} </p>
+                    <p>User ID: ${data.userId} </p>
+                    <p>ID : ${data.id}</p>
+                    <p>Completion Status : ${data.value} </p>
+                `
+                /* backtick are used for multiline String in JS */
+            }).
+            catch(error => {
+                console.log(error)
+            })
+
+    </script>
+
+</body>
+
+</html>

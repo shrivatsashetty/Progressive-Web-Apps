@@ -46,7 +46,8 @@
     <form action="/login" method="post">
         <div style="margin-top:150px; text-align: center;">
             <h1>
-                Login</h1><br><br>
+                Login
+            </h1> <br> <br>
             <input type="text" placeholder="Enter Username" name="username" id="username" /><br>
             <input type="password" placeholder="Enter Password" name="password" id="password" /><br><br>
             <input type="submit" value="Login" class="button" />
@@ -55,7 +56,17 @@
 
     <script>
         if('serviceWorker' in navigator){
-            console.log("Service worker present")
+            window.addEventListner('load', () => { 
+                navigator.serviceWorker.register("sw.js", {
+                    scope : "/"
+                } )
+                .then(registration => {
+                    console.log("Service Worker Sucessfully registered", registration);
+                })
+                .catch(error => {
+                    console.log('service worker not found', error);
+                })
+            })
         }
     </script>
 </body>

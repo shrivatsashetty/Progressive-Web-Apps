@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login Page</title>
+    <link rel="manifest", href="manifest.json" />
+
     <style>
         h1,
         p {
@@ -40,6 +42,7 @@
             box-sizing: border-box;
         }
     </style>
+
 </head>
 
 <body>
@@ -55,20 +58,21 @@
     </form>
 
     <script>
-        if('serviceWorker' in navigator){
-            window.addEventListner('load', () => { 
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
                 navigator.serviceWorker.register("sw.js", {
-                    scope : "/" 
-                } )
+                    scope: "/"
+                })
                 .then(registration => {
-                    console.log("Service Worker Sucessfully registered", registration);
+                    console.log("Service Worker Successfully registered", registration);
                 })
                 .catch(error => {
-                    console.log('service worker not found', error);
+                    console.log('Service worker not found', error);
                 })
             })
         }
     </script>
+    
 </body>
 
 </html>

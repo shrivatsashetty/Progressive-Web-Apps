@@ -1,7 +1,7 @@
 const cacheName = 'site-cache-v1'
 const assestsToCache = [
     "/",
-    "/index.html",
+    "/index.html"
 ]
 
 self.addEventListener('install',(event)=>{

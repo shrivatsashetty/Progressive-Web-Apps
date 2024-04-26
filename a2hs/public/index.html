@@ -41,7 +41,7 @@
 <link rel="manifest" href="manifest.json">
 <body>
     <!-- create a button element to prompt for installation of the app -->
-    <button id="install">Install App</button>
+    <button id="install" hidden>Install App</button>
     <form action="/login" method="post">
         <div style="margin-top:150px; text-align: center;">
             <h1>
@@ -63,7 +63,7 @@
         window.addEventListener("beforeinstallprompt", (event) => {
             // avoid default beahivour like page reload when an event occours
             event.preventDefault();
-            installPrompt = event;
+            installPrompt = event; // copy the data in the event object into a variable
             installButton.removeAttribute("hidden"); // unhide the button attribute
         })
 
@@ -80,17 +80,18 @@
             const result = await installPrompt.prompt()
             console.log("The App was ", result.outcome);
             // now hide the prompt to install since the user already made a choice by calling the user defined func to hide it
-            disableInsatllPrompt();
+            disableInstallPrompt();
                         
         })
 
         // defining a function to hide the insatllPrompt
-        function disableInsatllPrompt(){
+        function disableInstallPrompt(){
             installPrompt = null;
             installButton.setAttribute("hidden", "");
         }
 
     </script>
+
     <script src="main.js"></script>
 </body>
 </html>

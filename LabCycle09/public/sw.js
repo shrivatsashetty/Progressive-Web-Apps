@@ -7,7 +7,7 @@
             caches
                 .open('PWD_app')
                 .then(cache =>
-                    caches.addAll([
+                    cache.addAll([
                         '/git'
                     ])
                 )
@@ -20,7 +20,7 @@
         console.log('service worker is activating');
     })
 
-    self.addEventListener('fetch', event => {
+    self.addEventListener('fetch', event => {       
         console.log('fetching', event.request.url);
         event.respondWith(
 

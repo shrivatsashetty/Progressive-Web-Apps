@@ -30,56 +30,56 @@
         while(index < source.length){
             console.log("Fetching from: " + source[index]);
             fetch(source[index])
-            .then(response=> response.json())
-            .then(data=>{
-                console.log(data);
-                // dat = JSON.stringify(data);
-                let dat1 = data;
-                console.log(dat1);
-                let bod = document.getElementById("body");
-                let tb = document.getElementById("tbl");
-                for(let i=0; i<dat1.length;i++){
+                .then(response=> response.json())
+                .then(data=>{
+                    console.log(data);
+                    // dat = JSON.stringify(data);
+                    let dat1 = data;
+                    console.log(dat1);
+                    let bod = document.getElementById("body");
+                    let tb = document.getElementById("tbl");
+                    for(let i=0; i<dat1.length;i++){
 
-                    var tr = document.createElement('tr');
-                    var td = document.createElement('td');
+                        var tr = document.createElement('tr');
+                        var td = document.createElement('td');
 
-                    td.innerHTML = dat1[i]['date'];
-                    tr.appendChild(td);
-                    tb.appendChild(tr);
+                        td.innerHTML = dat1[i]['date'];
+                        tr.appendChild(td);
+                        tb.appendChild(tr);
 
-                    var td = document.createElement('td');
-                    td.innerHTML = dat1[i]['netReceivables']
-                    tr.appendChild(td);
-                    tb.appendChild(tr);
+                        var td = document.createElement('td');
+                        td.innerHTML = dat1[i]['netReceivables']
+                        tr.appendChild(td);
+                        tb.appendChild(tr);
 
-                    var td = document.createElement('td');
-                    td.innerHTML = dat1[i]['cashAndCashEquivalents'];
-                    tr.appendChild(td);
-                    tb.appendChild(tr);
+                        var td = document.createElement('td');
+                        td.innerHTML = dat1[i]['cashAndCashEquivalents'];
+                        tr.appendChild(td);
+                        tb.appendChild(tr);
 
-                    var td = document.createElement('td');
-                    td.innerHTML = dat1[i]['taxAssets'];
-                    tr.appendChild(td);
-                    tb.appendChild(tr);
+                        var td = document.createElement('td');
+                        td.innerHTML = dat1[i]['taxAssets'];
+                        tr.appendChild(td);
+                        tb.appendChild(tr);
 
-                    var td = document.createElement('td');
-                    td.innerHTML = dat1[i]['otherCurrentLiabilities'];
-                    tr.appendChild(td);
-                    tb.appendChild(tr);
+                        var td = document.createElement('td');
+                        td.innerHTML = dat1[i]['otherCurrentLiabilities'];
+                        tr.appendChild(td);
+                        tb.appendChild(tr);
 
-                    var td = document.createElement('td');
-                    td.innerHTML = dat1[i]['commonStock'];
-                    tr.appendChild(td);
-                    tb.appendChild(tr);
+                        var td = document.createElement('td');
+                        td.innerHTML = dat1[i]['commonStock'];
+                        tr.appendChild(td);
+                        tb.appendChild(tr);
 
-                    var td = document.createElement('td');
-                    td.innerHTML = dat1[i]['totalInvestments'];
-                    tr.appendChild(td);
-                    tb.appendChild(tr);
-                }
-            })
-            .catch(err => console.log("Error", err) );
-            index += 1;
+                        var td = document.createElement('td');
+                        td.innerHTML = dat1[i]['totalInvestments'];
+                        tr.appendChild(td);
+                        tb.appendChild(tr);
+                    }
+                })
+                .catch(err => console.log("Error", err) );
+                index += 1;
         }
     });
 </script>

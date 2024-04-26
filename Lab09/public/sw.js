@@ -1,6 +1,3 @@
-/* Immediately Invoked Function Expression (IIFE) in JavaScript, runs without having to call the function
-   instead enclosing it in paranthesis*/
-
 (function () {
 
     self.addEventListener('install', event => {

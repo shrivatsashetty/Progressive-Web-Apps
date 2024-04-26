@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <h1> Push Notifications</h1>
+    <p id="fetch-demo"> </p>
+    <button onclick="subscribe">Push Notifications</button>
+    <div id="fake-api-content"></div>
+
+    <script>
+        // create a user defined asyncronous function
+        async function subscribe(){
+            // await till the service worker is ready and create a serviceWorker object
+            let sw  = await navigator.serviceWorker.ready;
+            // the pushManager attribute of the serviceWorker class provides methods to work with subscriptions
+            let push = sw.pushManager.subscribe({
+                userVisibleOnly: true,
+                applicationServerKey: 'BJzT3EoUjcjrtivCJFhpxAtJ-QZqPsPyi_zGlUSFNgmH1_n3TKAHDUIhUnSSH1XXvgL_lG0jgw24uVJgHoIOBoE'
+            });
+
+            // once the push object is ready, log it to the console
+            console.log(JSON.stringify(push));
+
+            if('serviceWorker' in navigator) {
+                // when the window loads, call a method to register serviceWorker 
+                window.addEventListener('load', async () => {
+                    let sw  = await navigator.serviceWorker.register('sw.js');
+                    console.log(sw);
+                });
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>

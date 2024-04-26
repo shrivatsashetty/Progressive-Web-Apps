@@ -1,0 +1,70 @@
+{
+    "name": "Login Page",
+    "short_name": "Login App",
+    "description": "A simple Login page using PWA",
+    
+    "id": "./",
+    "scope":".",
+    "start_url":"/index.html",
+
+    "background_color": "#42b883",
+    "theme_color": "#42b883",
+    "display": "standalone",
+    "orientation": "potrait",
+    "display_override": ["window-control-overlay"],
+
+    "protocol_handler": [
+        {
+            "protocol": "web+tea",
+            "url": "/tea?type=%s"
+        },
+        {
+            "protocol": "web+coffe",
+            "url": "/coffe?type=%s"
+        }
+    ],
+
+    "icons": [
+        {
+            "src":"images/icons/icon-72x72.png",
+            "size": "72x72",
+            "type": "images/png",
+            "purpouse": "any"
+        },
+        {
+            "src":"images/icons/icon-96x96.png",
+            "size": "96x96",
+            "type": "images/png",
+            "purpouse": "any"
+        },
+        {
+            "src":"images/icons/icon-144x144.png",
+            "size": "144x144",
+            "type": "images/png",
+            "purpouse": "any"
+        }
+        
+    ],
+
+    "screenshots": [
+        {
+            "src": "images/screenshot1.png",
+            "size": "640x320",
+            "type": "images/png",
+            "form_factor":"wide",
+            "label": "powerfull-pwas"
+        },
+        {
+            "src": "images/screenshot2.png",
+            "size": "640x320",
+            "type": "images/png",
+            "form_factor":"narrow",
+            "label": "powerfull-pwas"
+        }
+
+    ],
+
+    "splash_pages": null
+
+
+}

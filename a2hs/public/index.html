@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Login Page</title>
+<style>
+    h1,
+    p {
+        color: "blue";
+        font-family: "Comic Sans MS";
+    }
+
+    .button {
+        background-color: #4CAF50;
+        /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        font-family: "Comic Sans MS";
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+        background-color: #008CBA;
+        width: 30%;
+    }
+
+    input[type=text],
+    [type=password] {
+        width: 30%;
+        padding: 12px 20px;
+        margin: 8px 0;
+        display: inline-block;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        box-sizing: border-box;
+    }
+</style>
+<link rel="manifest" href="manifest.json">
+<body>
+    <!-- create a button element to prompt for installation of the app -->
+    <button id="install">Install App</button>
+    <form action="/login" method="post">
+        <div style="margin-top:150px; text-align: center;">
+            <h1>
+                Login</h1><br><br>
+            <input type="text" placeholder="Enter Username" name="username" id="username" /><br>
+            <input type="password" placeholder="Enter Password" name="password" id="password" /><br><br>
+            <input type="submit" value="Login" class="button" />
+        </div>
+    </form>
+    <script>
+        /* add to home screen code */
+
+        // create a prompt to install the app and initially set it to null
+        let installPrompt = null;
+        // create a button object to confirm installation
+        // the query selector selects the first html element matching the given css style 
+        let installButton = document.querySelector("#install");// selects the HTML element with the specified id when used with '#'' symbol
+
+        window.addEventListener("beforeinstallprompt", (event) => {
+            // avoid default beahivour like page reload when an event occours
+            event.preventDefault();
+            installPrompt = event;
+            installButton.removeAttribute("hidden"); // unhide the button attribute
+        })
+
+        /* make the install button to listen to the click event 
+           when the click event is triggered call an asynchronous javascript function 
+           this function gets executed immediately without waiting for the other events to be finished */
+        installButton.addEventListener('click', async () => {
+            // if installPrompt is null then return nothing
+            if(!installPrompt){
+                return
+            }
+            /* wait for the installPrompt object to prompt the user to install the app or not
+               whatever the reponse by the user store it in the result variable an log it to console */
+            const result = await installPrompt.prompt()
+            console.log("The App was ", result.outcome);
+            // now hide the prompt to install since the user already made a choice by calling the user defined func to hide it
+            disableInsatllPrompt();
+                        
+        })
+
+        // defining a function to hide the insatllPrompt
+        function disableInsatllPrompt(){
+            installPrompt = null;
+            installButton.setAttribute("hidden", "");
+        }
+
+    </script>
+    <script src="main.js"></script>
+</body>
+</html>

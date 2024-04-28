@@ -27,7 +27,8 @@
                 return response.json();
             }).
             then(data => { // then chaining i.e. try with multiple catch
-                fakeApi.innerHTML = `
+                fakeApi.innerHTML = 
+                `
                     <h1>Fake API Respone</h1>
                     <p>Title : ${data.title} </p>
                     <p>User ID: ${data.userId} </p>

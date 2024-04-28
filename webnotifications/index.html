@@ -30,7 +30,7 @@
 
             if('serviceWorker' in navigator) {
                 // when the window loads, call a method to register serviceWorker 
-                window.addEventListener('load', async () => {
+                addEventListener('load', async () => {
                     let sw  = await navigator.serviceWorker.register('sw.js');
                     console.log(sw);
                 });
